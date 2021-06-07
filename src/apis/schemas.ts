@@ -21,6 +21,6 @@ export const validatorCompiler = ({ schema }) => {
 
 export const HealthSchema = {
   querystring: yup.object({
-    testArg: yup.string().required().nullable(false),
-  }).required()
+    testArg: yup.string(),
+  })
 };

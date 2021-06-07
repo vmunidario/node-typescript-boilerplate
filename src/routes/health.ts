@@ -1,15 +1,17 @@
 import { FastifyInstance } from 'fastify';
-import {
-  HealthSchema,
-  validatorCompiler,
-} from './schema';
+import { alive, ready } from '../apis/health';
+import { HealthSchema, validatorCompiler } from '../apis/schemas';
 
-export default async function (fastify: FastifyInstance): Promise<void> {
+export default async function (fastify: FastifyInstance) {
   fastify
-    .get('/health/alive', { schema: HealthSchema, validatorCompiler }, async function () {
-      return { message: 'ok' };
-    })
-    .get('/health/ready', { schema: HealthSchema, validatorCompiler }, async function () {
-      return { message: 'ok' };
-    });
+    .get(
+      '/health/alive',
+      { schema: HealthSchema, validatorCompiler },
+      alive
+    )
+    .get(
+      '/health/ready',
+      { schema: HealthSchema, validatorCompiler },
+      ready
+    );
 }
