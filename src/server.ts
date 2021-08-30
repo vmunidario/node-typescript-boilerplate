@@ -3,13 +3,12 @@ import path = require('path');
 import AutoLoad from 'fastify-autoload';
 import fastify, { FastifyInstance } from 'fastify';
 import * as env from "./env";
+import log from './utils/log';
 
 export default async function (opts = {}): Promise<FastifyInstance> {
 
   const server = fastify({
-    logger: {
-      level: 'info'
-    }
+    logger: log
   });
 
   env.config();

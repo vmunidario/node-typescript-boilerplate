@@ -1,4 +1,4 @@
-export class BfcError extends Error {
+export class AppError extends Error {
   statusCode: number;
   code: string;
 
@@ -13,17 +13,17 @@ export class BfcError extends Error {
     if (!err) {
       err = InternalError();
     }
-    return new BfcError(err.message, 400, code || 'BAD_REQUEST');
+    return new AppError(err.message, 400, code || 'BAD_REQUEST');
   }
 }
 
 export const InternalError = (message = 'Internal error') =>
-  new BfcError(message, 500);
+  new AppError(message, 500);
 export const BadRequest = (message = 'Bad request') =>
-  new BfcError(message, 400, 'BAD_REQUEST');
+  new AppError(message, 400, 'BAD_REQUEST');
 export const NotFound = (message = 'Bad request') =>
-  new BfcError(message, 404, 'NOT_FOUND');
+  new AppError(message, 404, 'NOT_FOUND');
 export const Unauthorized = (message = 'Unauthorized') =>
-  new BfcError(message, 401, 'UNAUTHORIZED');
+  new AppError(message, 401, 'UNAUTHORIZED');
 export const NotImplemented = (message = 'Not implemented') =>
-  new BfcError(message, 400, 'NOT_IMPLEMENTED');
+  new AppError(message, 400, 'NOT_IMPLEMENTED');

@@ -1,6 +1,6 @@
 import { FastifyInstance } from 'fastify';
 import { alive, ready } from '../apis/health';
-import { HealthSchema, validatorCompiler } from '../apis/schemas';
+import { HealthSchema, validatorCompiler } from '../schemas';
 
 export default async function (fastify: FastifyInstance) {
   fastify

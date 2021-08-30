@@ -1,8 +1,10 @@
+import 'reflect-metadata';
 import { FastifyInstance } from 'fastify';
 import initServer from './server';
 
 initServer()
   .then((server: FastifyInstance) => {
+    console.log(server.printRoutes());
     server.listen(process.env.PORT || 8888, '0.0.0.0', (err, address) => {
       if (err) {
         console.error(err);
